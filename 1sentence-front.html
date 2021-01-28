@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="upper">
+        <div class="word-row">
+          <span class="word">{{Expression}}</span>
+          <span class="pronunciation">{{Sound}}</span>
+          <span class="badge hint-button" id="hint-button">HINTS+</span>
+        </div>
+        <div class="badges-row" id="badges">{{Badges}}</div>
+      </div>
+      <div class="lower">
+        <div class="phonetic">/ˈstrʌktʃə $ -ər/</div>
+        <div class="sample" id="sample">{{Sample}}</div>
+        <div class="picture" id="picture">{{Picture}}</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.onScriptLoaded = function () {
+      renderCard({
+        cardName: "sentence.front",
+        highlightCloze: false,
+        hints: ["picture"],
+      });
+    };
+    if (document.scriptLoaded) document.onScriptLoaded();
+    if (!document.scriptLoaded) {
+      var newScript = document.createElement("script");
+      document.head.appendChild(newScript);
+      newScript.src = "./script.js";
+      document.scriptLoaded = true;
+    }
+  </script>
+</html>

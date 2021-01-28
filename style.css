@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins");
+
+.wrapper {
+  width: fit-content;
+  max-width: 500px;
+  margin: 20px;
+  font-family: poppins, sans-serif;
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: auto;
+}
+
+.upper {
+  border: hidden;
+  border-radius: 10px 10px 0px 0px;
+  padding: 10px;
+  background: rgb(33, 147, 176);
+  background: linear-gradient(
+    180deg,
+    rgba(33, 147, 176, 1) 0%,
+    rgba(109, 213, 237, 1) 100%
+  );
+}
+
+.word-row {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.word {
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hint-button {
+  font-size: 15px;
+  margin-left: auto;
+  background: radial-gradient(khaki 40px, transparent 0, transparent 100%),
+    radial-gradient(skyblue 40px, transparent 0, transparent 100%),
+    radial-gradient(pink 40px, transparent 0, transparent 100%), snow;
+  background-blend-mode: multiply;
+  background-size: 100px 100px;
+  background-position: 0 0, 33px 33px, -33px -33px;
+
+  font-weight: 800;
+  border-radius: 0px !important;
+}
+
+.badges-row {
+  margin: 0px 10px 0px 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 14px;
+  border: hidden;
+  border-radius: 15px;
+  padding: 5px 8px 5px 8px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.lower {
+  background: rgb(253, 252, 251);
+  background: linear-gradient(
+    180deg,
+    rgba(253, 252, 251, 1) 41%,
+    rgba(244, 238, 233, 1) 100%
+  );
+  border: hidden;
+  border-radius: 0px 0px 10px 10px;
+  padding: 10px;
+}
+
+.phonetic {
+  margin-bottom: 5px;
+  font-size: 20px;
+  text-align: center;
+  color: rgb(33, 147, 176);
+  font-weight: 500;
+}
+
+.highlight {
+  background-color: yellow;
+  color: black;
+}
+
+.sample {
+  text-align: center;
+  font-size: large;
+}
+
+.picture {
+  text-align: center;
+  margin: 10px;
+}
+.picture img {
+  max-width: 350px;
+}
+
+.sample-back {
+  margin: 0px 10px 0px 10px;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: lighter;
+  color: #fff;
+}
+
+.example-heading {
+  text-align: center;
+  font-weight: 400;
+  font-size: 18px;
+  text-decoration: underline;
+  margin: 0px;
+}
+
+.meaning,
+.sentences {
+  font-size: 15px;
+}
+
+a.replay-button.soundLink {
+  width: 30px;
+}
+
+.cloze-answer {
+  text-align: center;
+}
+
+#clozeTerm,
+#deletedCloze {
+  color: chocolate;
+}

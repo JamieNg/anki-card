@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="upper">
+        <div class="word-row">
+          <span class="word">{{Expression}}</span>
+          <span class="pronunciation">{{Sound}}</span>
+        </div>
+        <div class="badges-row" id="badges">{{Badges}}</div>
+        <div class="sample sample-back" id="sample">{{Sample}}</div>
+      </div>
+      <div class="lower">
+        <div class="cloze-answer">{{type:Sample Cloze}}</div>
+        <div class="phonetic">{{Phonetic}}</div>
+        <div class="meaning" id="meaning">{{Meaning}}</div>
+        <hr />
+        <div>
+          <p class="example-heading">Examples</p>
+          <div class="sentences" id="sentences">{{Sentences}}</div>
+        </div>
+        <hr />
+        {{#Notes}}
+        <div>
+          <p class="example-heading">Notes</p>
+          <p>{{Notes}}</p>
+        </div>
+        {{/Notes}}
+        <div class="picture" id="picture">{{Picture}}</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    renderCard({
+      cardName: "sentence.back",
+      highlightCloze: true,
+    });
+  </script>
+</html>
