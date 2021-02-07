@@ -21,12 +21,28 @@ function renderCard(cardConfig) {
   }
 
   if (cardConfig.typeCloze != undefined) {
-    hideCloze(cardConfig.typeCloze);
+    if (cardConfig.fullCloze) {
+      hideCloze(cardConfig.typeCloze, cardConfig.fullCloze);
+    } else {
+      hideCloze(cardConfig.typeCloze);
+    }
+  }
+
+  if (cardConfig.phoneticKeyboard != undefined) {
+    if (cardConfig.phoneticKeyboard) bindPhoneticKeyboard();
   }
 }
 
 //detect cloze
-function detectCloze(string) {
+function detectCloze(string, isFullCloze) {
+  if (isFullCloze) {
+    return {
+      clozeStart: 0,
+      clozeEnd: string.length - 1,
+      clozeTerm: string,
+    };
+  }
+
   let re = /\(\(.*?\)\)/;
   let reg = re.exec(string);
   if (reg == null) return null;
@@ -36,10 +52,6 @@ function detectCloze(string) {
     clozeEnd: reg.index + reg[0].length,
     clozeTerm: reg[0].replace("((", "").replace("))", ""),
   };
-}
-
-function processCloze(elementId) {
-  var element = document.getElementById(elementId);
 }
 
 function showCloze(elementId, isHighlighted) {
@@ -97,13 +109,14 @@ function bindHintButton(hints) {
   };
 }
 
-function hideCloze(elementId) {
+function hideCloze(elementId, isFullCloze = false) {
   let element = document.getElementById(elementId);
   let text = element.innerHTML;
-  let cloze = detectCloze(text);
+  let cloze = detectCloze(text, isFullCloze);
   if (cloze == null) return;
+  let replacement = isFullCloze ? text : `((${cloze.clozeTerm}))`;
   element.innerHTML = text.replace(
-    `((${cloze.clozeTerm}))`,
+    replacement,
     `<span id="deletedCloze">_____</span><span id="clozeTerm">${simpleObfuscator(
       cloze.clozeTerm
     )}</span>`
@@ -131,4 +144,50 @@ function simpleObfuscator(term) {
       term[term.length - 1]
     }`;
   }
+}
+
+function bindPhoneticKeyboard() {
+  var inputNode = document.getElementById("typeans");
+  inputNode.onkeyup = function (e) {
+    for (const key in ipaMap) {
+      if (Object.hasOwnProperty.call(ipaMap, key)) {
+        const element = ipaMap[key];
+        e.target.value = e.target.value.replace(key, element);
+      }
+    }
+  };
+
+  var ipaMap = {
+    //vowels
+    uH: "ʌ",
+    ah: "ɑ:",
+    aa: "æ",
+    uh: "ə",
+    ur: "ɜ:ʳ",
+    ih: "ɪ",
+    ee: "i",
+    aw: "ɔ",
+    UH: "ʊ",
+    oo: "u",
+    eh: "ɛ",
+    //dipthongs
+    ai: "aɪ",
+    ay: "eɪ",
+    ew: "ju",
+    oh: "oʊ",
+    ow: "aʊ",
+    oy: "ɔɪ",
+    //consonants
+    // "b": "b",
+    ch: "tʃ",
+    // 'd': 'd',
+    // 'f': 'f',
+    // 'g': 'g',
+    CH: "dʒ",
+    ng: "ŋ",
+    sh: "ʃ",
+    th: "θ",
+    TH: "ð",
+    zh: "ʒ",
+  };
 }

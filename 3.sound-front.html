@@ -6,29 +6,31 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
+  {{#Sound}}
   <body>
     <div class="wrapper">
       <div class="upper">
         <div class="word-row">
-          <span class="word">{{Expression}}</span>
+          <span class="word" id="expression">{{Expression}}</span>
           <span class="pronunciation">{{Sound}}</span>
           <span class="badge hint-button" id="hint-button">HINTS+</span>
         </div>
         <div class="badges-row" id="badges">{{Badges}}</div>
       </div>
       <div class="lower">
-        <div class="phonetic">{{Phonetic}}</div>
-        <div class="sample" id="sample">{{Sample}}</div>
-        <div class="picture" id="picture">{{Picture}}</div>
+        <div class="phonetic" id="phonetic">{{Phonetic}}</div>
+        <div class="example-heading">Type what you hear</div>
+        {{type:Expression}}
       </div>
     </div>
   </body>
   <script>
     document.onScriptLoaded = function () {
       renderCard({
-        cardName: "sentence.front",
-        highlightCloze: false,
-        hints: ["picture"],
+        cardName: "sound.front",
+        hints: ["phonetic"],
+        typeCloze: "expression",
+        fullCloze: true,
       });
     };
     if (document.scriptLoaded) document.onScriptLoaded();
@@ -39,4 +41,5 @@
       document.scriptLoaded = true;
     }
   </script>
+  {{/Sound}}
 </html>

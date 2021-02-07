@@ -11,15 +11,13 @@
       <div class="upper">
         <div class="word-row">
           <span class="word">{{Expression}}</span>
-          <span class="pronunciation">{{Sound}}</span>
           <span class="badge hint-button" id="hint-button">HINTS+</span>
         </div>
         <div class="badges-row" id="badges">{{Badges}}</div>
       </div>
       <div class="lower">
-        <div class="phonetic">{{Phonetic}}</div>
-        <div class="sample" id="sample">{{Sample}}</div>
-        <div class="picture" id="picture">{{Picture}}</div>
+        <div class="example-heading">Phonetic transcription</div>
+        <div class="phonetic">{{type:Phonetic}}</div>
       </div>
     </div>
   </body>
@@ -28,7 +26,8 @@
       renderCard({
         cardName: "sentence.front",
         highlightCloze: false,
-        hints: ["picture"],
+        hints: [],
+        phoneticKeyboard: true,
       });
     };
     if (document.scriptLoaded) document.onScriptLoaded();
