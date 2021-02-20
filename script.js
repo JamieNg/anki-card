@@ -189,5 +189,7 @@ function bindPhoneticKeyboard() {
     th: "θ",
     TH: "ð",
     zh: "ʒ",
+    //stress
+    ST: "ˈ"
   };
 }
