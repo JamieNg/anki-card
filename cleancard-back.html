@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <article>
+        <hgroup>
+          <h1>{{Expression}} {{Sound}}</h1>
+          <mark>/{{Phonetic}}/</mark>
+          <p>
+            <abbr title="word type">{{Info}}</abbr>
+          </p>
+        </hgroup>
+        <p>{{Meaning}}</p>
+        <p>
+          <small> <kbd>e.g.</kbd> {{Sentence}} </small>
+        </p>
+        {{#Extra}}
+        <details>
+          <summary>Extra</summary>
+          {{Extra}}
+        </details>
+        {{/Extra}}
+        <div>{{Picture}}</div>
+        <footer>
+          <small><i>{{Cite}}</i></small>
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>
